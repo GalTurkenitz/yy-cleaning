@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --navy:   #0B2954;
+  --blue:   #1565C0;
+  --mid:    #1976D2;
+  --light:  #42A5F5;
+  --sky:    #EEF6FF;
+  --accent: #00AAFF;
+  --text:   #0F1B2D;
+  --muted:  #64748B;
+}
+
+html {
+  direction: rtl;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  background: #fff;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--light); color: #fff; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--sky); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+
+/* Hero bubbles */
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1);   opacity: 0.15; }
+  50%  { opacity: 0.25; }
+  100% { transform: translateY(-100vh) scale(0.8); opacity: 0; }
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(0,170,255,0.1));
+  border: 1px solid rgba(255,255,255,0.2);
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
+
+/* Logo glow */
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(0,170,255,0.4)); }
+  50%       { filter: drop-shadow(0 0 40px rgba(0,170,255,0.7)); }
+}
+
+.logo-glow { animation: glow 3s ease-in-out infinite; }
+
+/* Floating button bounce */
+@keyframes bounceIn {
+  0%   { transform: scale(0) rotate(-10deg); }
+  60%  { transform: scale(1.15) rotate(3deg); }
+  80%  { transform: scale(0.95); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.bounce-in { animation: bounceIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+
+/* Pulse ring */
+@keyframes pulseRing {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: var(--pulse-color, rgba(37,211,102,0.35));
+  animation: pulseRing 1.8s ease-out infinite;
+}
+
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: var(--pulse-color, rgba(37,211,102,0.35));
+  animation: pulseRing 1.8s ease-out infinite 0.9s;
+}
+
+/* Section reveal */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Card hover */
+.service-card {
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(11,41,84,0.15);
+}
+
+/* Instagram hover */
+.ig-card {
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+.ig-card:hover { transform: scale(1.03) rotate(-0.5deg); }
+
+/* Button shine */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: skewX(-20deg);
+  transition: right 0.5s ease;
+}
+.btn-shine:hover::after { right: 120%; }
+
+/* Review image */
+.review-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.review-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 24px 48px rgba(11,41,84,0.18);
+}
+
+/* Nav blur */
+.nav-blur {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Floating button group */
+.float-group {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.float-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+.float-btn:hover {
+  transform: scale(1.18);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+/* Parallax wrapper */
+.parallax-img {
+  transform: translateY(var(--parallax-y, 0px));
+  transition: transform 0.1s linear;
+}
