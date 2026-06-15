@@ -13,7 +13,7 @@ function Layout({ children }) {
   return (
     <div className="flex min-h-screen">
       <Navbar />
-      <div className="flex-1 md:ml-48 flex flex-col">
+      <div className="flex-1 flex flex-col">
         <main id="main-content" className="flex-1">
           {children}
         </main>

@@ -61,48 +61,39 @@ export default function Contact() {
           <p className="text-blue-200 text-lg">ינון יחזור אליכם תוך זמן קצר</p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
+        <div className="flex flex-col gap-6 max-w-xl mx-auto w-full">
 
-          {/* Quick contact buttons */}
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:w-72 flex flex-col gap-4 shrink-0">
-            <a href="tel:0587222076"
-              className="btn-shine flex items-center gap-4 px-7 py-5 rounded-2xl bg-white text-[#0B2954] font-800 text-xl shadow-2xl hover:bg-blue-50 transition-all hover:scale-105"
-              aria-label="חייגו לינון 058-7222076">
-              <motion.span animate={{ rotate: [0, -15, 15, -10, 10, 0] }}
-                transition={{ repeat: Infinity, repeatDelay: 3, duration: 0.6 }}
-                className="text-3xl" aria-hidden="true">📞</motion.span>
-              058-7222076
-            </a>
-            <a href="https://wa.me/972587222076?text=שלום, אשמח לקבל הצעת מחיר"
-              target="_blank" rel="noopener noreferrer"
-              className="btn-shine flex items-center gap-3 px-7 py-5 rounded-2xl font-800 text-lg shadow-2xl transition-all hover:scale-105"
-              style={{ background: '#25D366', color: '#fff' }}
-              aria-label="שלחו הודעה ישירה בוואטסאפ">
-              {WA_ICON}
-              וואטסאפ ישיר
-            </a>
-            <p className="text-blue-300/60 text-sm text-center pt-2">ינון — זמין ראשון עד שישי</p>
-          </motion.div>
+          {/* Phone */}
+          <motion.a href="tel:0587222076"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.6 }}
+            className="btn-shine flex items-center gap-4 px-7 py-5 rounded-2xl bg-white text-[#0B2954] font-800 text-xl shadow-2xl hover:bg-blue-50 transition-all hover:scale-105"
+            aria-label="חייגו לינון 058-7222076">
+            <motion.span animate={{ rotate: [0, -15, 15, -10, 10, 0] }}
+              transition={{ repeat: Infinity, repeatDelay: 3, duration: 0.6 }}
+              className="text-3xl" aria-hidden="true">📞</motion.span>
+            058-7222076
+          </motion.a>
 
-          {/* Divider */}
-          <div className="hidden lg:flex flex-col items-center gap-3 pt-4">
-            <div className="w-px flex-1 bg-white/10" aria-hidden="true" />
-            <span className="text-white/30 text-xs font-600">או</span>
-            <div className="w-px flex-1 bg-white/10" aria-hidden="true" />
-          </div>
-          <div className="lg:hidden flex items-center gap-4 w-full">
-            <div className="flex-1 h-px bg-white/10" aria-hidden="true" />
-            <span className="text-white/30 text-xs font-600">או מלאו טופס</span>
-            <div className="flex-1 h-px bg-white/10" aria-hidden="true" />
-          </div>
+          {/* WhatsApp direct */}
+          <motion.a href="https://wa.me/972587222076?text=שלום, אשמח לקבל הצעת מחיר"
+            target="_blank" rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.6 }}
+            className="btn-shine flex items-center gap-3 px-7 py-5 rounded-2xl font-800 text-lg shadow-2xl transition-all hover:scale-105"
+            style={{ background: '#25D366', color: '#fff' }}
+            aria-label="שלחו הודעה ישירה בוואטסאפ">
+            {WA_ICON}
+            וואטסאפ ישיר
+          </motion.a>
+
+          <p className="text-blue-300/60 text-sm text-center">ינון — זמין ראשון עד שישי</p>
 
           {/* Form */}
-          <motion.form initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          <motion.form initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             onSubmit={handleSubmit} noValidate
-            className="flex-1 rounded-2xl p-7 flex flex-col gap-5 border border-white/10"
+            className="rounded-2xl p-7 flex flex-col gap-5 border border-white/10"
             style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(12px)' }}
             aria-label="טופס יצירת קשר">
 
