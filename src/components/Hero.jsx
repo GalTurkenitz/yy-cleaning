@@ -56,14 +56,14 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-2xl mx-auto pt-4">
+      <div className="relative z-10 text-center px-6 max-w-2xl mx-auto pt-1">
 
         {/* Logo */}
         <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
-          className="mb-1">
-          <div style={{ height: 320, overflow: 'hidden', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src="/logo.png" alt="לוגו י.י נקיון ואחזקת מבנים" className="logo-glow" style={{ height: 520, width: 'auto', display: 'block' }} />
+          className="mb-0">
+          <div style={{ height: 360, overflow: 'hidden', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src="/logo.png" alt="לוגו י.י נקיון ואחזקת מבנים" className="logo-glow" style={{ height: 680, width: 'auto', display: 'block' }} />
           </div>
         </motion.div>
 
