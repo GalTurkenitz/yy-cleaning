@@ -27,9 +27,7 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-4">
-              <div style={{ width: 52, height: 52, borderRadius: '50%', background: 'white', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-                <img src="/logo.png" alt="לוגו י.י נקיון ואחזקת מבנים" style={{ width: 52, height: 52, objectFit: 'cover', borderRadius: '50%' }} />
-              </div>
+              <img src="/logo.png" alt="לוגו י.י נקיון ואחזקת מבנים" style={{ height: 56, width: 'auto', display: 'inline-block' }} />
               <div>
                 <p className="font-800 text-lg">י.י נקיון ואחזקת מבנים</p>
                 <p className="text-blue-300/70 text-sm">נקיון ברמה גבוהה</p>

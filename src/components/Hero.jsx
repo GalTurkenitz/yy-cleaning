@@ -62,9 +62,7 @@ export default function Hero() {
         <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
           className="mb-8">
-          <div className="logo-glow" style={{ width: 200, height: 200, borderRadius: '50%', background: 'white', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 25px 50px rgba(0,0,0,0.35)', overflow: 'hidden' }}>
-            <img src="/logo.png" alt="לוגו י.י נקיון ואחזקת מבנים" style={{ width: 200, height: 200, objectFit: 'cover', borderRadius: '50%' }} />
-          </div>
+          <img src="/logo.png" alt="לוגו י.י נקיון ואחזקת מבנים" className="logo-glow" style={{ height: 220, width: 'auto', display: 'inline-block' }} />
         </motion.div>
 
         {/* Title */}

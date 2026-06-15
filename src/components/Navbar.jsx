@@ -73,9 +73,7 @@ export default function Navbar() {
             {/* Logo */}
             <div className="flex flex-col items-center pt-8 pb-6 px-4 border-b border-white/10">
               <button onClick={() => go('/')} aria-label="חזרה לעמוד הבית">
-                <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'white', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)', overflow: 'hidden' }}>
-                  <img src="/logo.png" alt="לוגו" style={{ width: 80, height: 80, objectFit: 'cover', borderRadius: '50%' }} />
-                </div>
+                <img src="/logo.png" alt="לוגו" style={{ height: 80, width: 'auto', display: 'inline-block' }} />
               </button>
               <p className="text-white/70 text-xs mt-3 text-center leading-relaxed">י.י נקיון<br />ואחזקת מבנים</p>
             </div>
