@@ -19,7 +19,7 @@ export default function Instagram() {
               באו לעקוב<br />אחרינו
             </h2>
             <p className="text-blue-200 text-lg leading-relaxed mb-4 max-w-sm">
-              369 פוסטים של עבודות נקיון, לפני ואחרי, טיפים ועוד — הכל באינסטגרם שלנו.
+              מאות פוסטים של עבודות נקיון, לפני ואחרי, טיפים ועוד — הכל באינסטגרם שלנו.
             </p>
             <motion.a href={IG_URL} target="_blank" rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}

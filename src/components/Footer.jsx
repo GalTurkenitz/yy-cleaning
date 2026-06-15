@@ -27,8 +27,8 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-4">
-              <div className="bg-white rounded-xl overflow-hidden inline-flex items-center justify-center" style={{ width: 52, height: 52 }}>
-                <img src="/logo.png" alt="לוגו י.י נקיון ואחזקת מבנים" className="h-20 w-auto" />
+              <div style={{ width: 52, height: 52, borderRadius: '50%', background: 'white', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                <img src="/logo.png" alt="לוגו י.י נקיון ואחזקת מבנים" style={{ width: 52, height: 52, objectFit: 'cover', borderRadius: '50%' }} />
               </div>
               <div>
                 <p className="font-800 text-lg">י.י נקיון ואחזקת מבנים</p>
@@ -37,7 +37,7 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center text-blue-300/70 text-sm">
-              <a href="tel:0587222077" className="hover:text-white transition-colors">058-7222077</a>
+              <a href="tel:0587222076" className="hover:text-white transition-colors">058-7222076</a>
               <button onClick={() => setModal('privacy')} className="hover:text-white transition-colors">מדיניות פרטיות</button>
               <button onClick={() => setModal('terms')} className="hover:text-white transition-colors">תנאי שימוש</button>
               <button onClick={() => setModal('accessibility')} className="hover:text-white transition-colors">הצהרת נגישות</button>
@@ -59,7 +59,7 @@ export default function Footer() {
             <p><strong>מידע שאנו אוספים:</strong> אנו אוספים מידע שנמסר מרצון בעת יצירת קשר — שם, מספר טלפון ואימייל בלבד.</p>
             <p><strong>שימוש במידע:</strong> המידע ישמש אך ורק ליצירת קשר חוזר ולמתן הצעת מחיר. לא נמכור או נעביר מידע לגורמים שלישיים.</p>
             <p><strong>אחסון:</strong> המידע נשמר בצורה מאובטחת ולמשך הזמן הנדרש לצורך ביצוע השירות.</p>
-            <p><strong>זכויות המשתמש:</strong> יש לך זכות לעיין, לתקן או למחוק את המידע שלך בכל עת. לפנייה: 058-7222077.</p>
+            <p><strong>זכויות המשתמש:</strong> יש לך זכות לעיין, לתקן או למחוק את המידע שלך בכל עת. לפנייה: 058-7222076.</p>
             <p><strong>Cookies:</strong> אתר זה אינו משתמש בעוגיות מעקב.</p>
           </Modal>
         )}
@@ -71,7 +71,7 @@ export default function Footer() {
             <p><strong>קניין רוחני:</strong> כל תוכן האתר, כולל טקסטים, תמונות ולוגו, שייך לי.י נקיון ואחזקת מבנים ומוגן בזכויות יוצרים.</p>
             <p><strong>אחריות:</strong> החברה אינה אחראית לנזקים שיגרמו כתוצאה משימוש באתר. המידע באתר ניתן "כמות שהוא".</p>
             <p><strong>שינויים:</strong> החברה שומרת לעצמה את הזכות לשנות את תנאי השימוש בכל עת.</p>
-            <p><strong>יצירת קשר:</strong> לשאלות בנושא תנאי שימוש: 058-7222077.</p>
+            <p><strong>יצירת קשר:</strong> לשאלות בנושא תנאי שימוש: 058-7222076.</p>
           </Modal>
         )}
         {modal === 'accessibility' && (
@@ -87,7 +87,7 @@ export default function Footer() {
               <li>עמוד בעברית מלאה עם RTL תקני</li>
             </ul>
             <p><strong>נמצאתם בעיה?</strong> אנחנו מתחייבים לטפל בפניות נגישות תוך 5 ימי עסקים.</p>
-            <p><strong>פנייה:</strong> 058-7222077 — ינון</p>
+            <p><strong>פנייה:</strong> 058-7222076 — ינון</p>
           </Modal>
         )}
       </AnimatePresence>

@@ -16,6 +16,20 @@ export default function FloatingButton() {
   return (
     <div className="float-group" role="navigation" aria-label="קישורי יצירת קשר מהירים">
 
+      {/* Phone */}
+      <motion.a href="tel:0587222076"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1.65, type: 'spring', stiffness: 300, damping: 18 }}
+        className="float-btn pulse-ring text-white relative"
+        style={{ background: '#1565C0', '--pulse-color': 'rgba(21,101,192,0.4)' }}
+        aria-label="חייגו אלינו"
+        title="התקשרות">
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor" aria-hidden="true">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+      </motion.a>
+
       {/* Facebook */}
       <motion.a href={FB_URL} target="_blank" rel="noopener noreferrer"
         initial={{ scale: 0, opacity: 0 }}
@@ -45,7 +59,7 @@ export default function FloatingButton() {
       </motion.a>
 
       {/* WhatsApp — main, with pulse */}
-      <motion.a href="https://wa.me/972587222077?text=שלום, אשמח לקבל הצעת מחיר"
+      <motion.a href="https://wa.me/972587222076?text=שלום, אשמח לקבל הצעת מחיר"
         target="_blank" rel="noopener noreferrer"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}

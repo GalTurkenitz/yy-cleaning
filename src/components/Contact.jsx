@@ -22,7 +22,7 @@ export default function Contact() {
     if (Object.keys(errs).length) { setErrors(errs); return }
 
     const msg = `שלום ינון! 👋\n\nשמי *${form.name}*\nמיקום: *${form.location}*\nגודל המבנה: *${form.size}*\n\nאשמח לקבל הצעת מחיר 🙏`
-    window.open(`https://wa.me/972587222077?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(`https://wa.me/972587222076?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   const field = (key, label, placeholder, type = 'text') => (
@@ -67,15 +67,15 @@ export default function Contact() {
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-72 flex flex-col gap-4 shrink-0">
-            <a href="tel:0587222077"
+            <a href="tel:0587222076"
               className="btn-shine flex items-center gap-4 px-7 py-5 rounded-2xl bg-white text-[#0B2954] font-800 text-xl shadow-2xl hover:bg-blue-50 transition-all hover:scale-105"
-              aria-label="חייגו לינון 058-7222077">
+              aria-label="חייגו לינון 058-7222076">
               <motion.span animate={{ rotate: [0, -15, 15, -10, 10, 0] }}
                 transition={{ repeat: Infinity, repeatDelay: 3, duration: 0.6 }}
                 className="text-3xl" aria-hidden="true">📞</motion.span>
-              058-7222077
+              058-7222076
             </a>
-            <a href="https://wa.me/972587222077?text=שלום, אשמח לקבל הצעת מחיר"
+            <a href="https://wa.me/972587222076?text=שלום, אשמח לקבל הצעת מחיר"
               target="_blank" rel="noopener noreferrer"
               className="btn-shine flex items-center gap-3 px-7 py-5 rounded-2xl font-800 text-lg shadow-2xl transition-all hover:scale-105"
               style={{ background: '#25D366', color: '#fff' }}
