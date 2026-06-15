@@ -56,12 +56,12 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-2xl mx-auto pt-28">
+      <div className="relative z-10 text-center px-6 max-w-2xl mx-auto pt-10">
 
         {/* Logo */}
         <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
-          className="mb-8">
+          className="mb-3">
           <img src="/logo.png" alt="לוגו י.י נקיון ואחזקת מבנים" className="logo-glow" style={{ height: 400, width: 'auto', display: 'inline-block' }} />
         </motion.div>
 
