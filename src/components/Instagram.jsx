@@ -5,7 +5,6 @@ const IG_URL = 'https://www.instagram.com/cleanliness2344?igsh=MWl3MmI0aDh6aDNyZ
 export default function Instagram() {
   return (
     <section id="instagram" className="py-28 overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #0B2954 0%, #1565C0 60%, #1976D2 100%)' }}
       aria-labelledby="ig-title">
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center gap-14">

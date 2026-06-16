@@ -21,7 +21,7 @@ const WA_ICON = (
 
 function HomeCTA() {
   return (
-    <section className="py-14 px-6" style={{ background: 'linear-gradient(160deg, #050e1f 0%, #0B2954 100%)' }}>
+    <section className="py-14 px-6">
       <div className="max-w-lg mx-auto flex flex-col gap-4">
         <motion.a href="tel:0587222076"
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
@@ -47,6 +47,40 @@ function HomeCTA() {
   )
 }
 
+const BUBBLES = Array.from({ length: 18 }, (_, i) => ({
+  id: i,
+  size: Math.random() * 60 + 20,
+  left: Math.random() * 100,
+  delay: Math.random() * 8,
+  duration: Math.random() * 8 + 10,
+}))
+
+function HomeWrapper() {
+  return (
+    <div className="relative overflow-hidden"
+      style={{ background: 'linear-gradient(160deg, #050e1f 0%, #0B2954 45%, #0d3d7a 70%, #0f4fa0 100%)' }}>
+      {/* Bubbles spanning full page */}
+      <div aria-hidden="true" className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+        {BUBBLES.map(b => (
+          <div key={b.id} className="bubble" style={{
+            width: b.size, height: b.size,
+            left: `${b.left}%`,
+            bottom: `-${b.size}px`,
+            animationDelay: `${b.delay}s`,
+            animationDuration: `${b.duration}s`,
+          }} />
+        ))}
+      </div>
+      <div className="relative" style={{ zIndex: 1 }}>
+        <Hero />
+        <ServicesGrid />
+        <Instagram />
+        <HomeCTA />
+      </div>
+    </div>
+  )
+}
+
 function Layout({ children }) {
   return (
     <div className="flex min-h-screen">
@@ -66,7 +100,7 @@ export default function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<><Hero /><ServicesGrid /><Instagram /><HomeCTA /></>} />
+        <Route path="/" element={<HomeWrapper />} />
         <Route path="/category/:slug" element={<CategoryPage />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/before-after" element={<BeforeAfter />} />

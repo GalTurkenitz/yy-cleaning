@@ -31,29 +31,7 @@ export default function Hero() {
 
   return (
     <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #050e1f 0%, #0B2954 45%, #0d3d7a 70%, #0f4fa0 100%)' }}
       aria-label="עמוד ראשי">
-
-      {/* Bubbles */}
-      <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-        {BUBBLES.map(b => (
-          <div key={b.id} className="bubble" style={{
-            width: b.size, height: b.size,
-            left: `${b.left}%`,
-            bottom: `-${b.size}px`,
-            animationDelay: `${b.delay}s`,
-            animationDuration: `${b.duration}s`,
-          }} />
-        ))}
-      </div>
-
-      {/* Gradient orbs */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-10"
-          style={{ background: 'radial-gradient(circle, #42A5F5, transparent)' }} />
-        <div className="absolute bottom-1/3 left-1/3 w-64 h-64 rounded-full opacity-8"
-          style={{ background: 'radial-gradient(circle, #00AAFF, transparent)' }} />
-      </div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-2xl mx-auto pt-0">
