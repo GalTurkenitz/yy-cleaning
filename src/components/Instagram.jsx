@@ -4,7 +4,8 @@ const IG_URL = 'https://www.instagram.com/cleanliness2344?igsh=MWl3MmI0aDh6aDNyZ
 
 export default function Instagram() {
   return (
-    <section id="instagram" className="py-28 overflow-hidden"
+    <section id="instagram" className="py-28 overflow-hidden relative"
+      style={{ background: 'rgba(0,0,0,0.25)', borderTop: '1px solid rgba(255,255,255,0.08)' }}
       aria-labelledby="ig-title">
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center gap-14">

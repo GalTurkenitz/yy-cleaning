@@ -6,7 +6,7 @@ export default function ServicesGrid() {
   const navigate = useNavigate()
 
   return (
-    <section className="pt-6 pb-12 px-6">
+    <section className="pt-14 pb-12 px-6">
       <div className="max-w-5xl mx-auto">
 
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
