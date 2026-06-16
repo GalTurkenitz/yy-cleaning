@@ -103,15 +103,6 @@ export default function Hero() {
           ))}
         </motion.ul>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }}
-          className="mt-16 flex justify-center" aria-hidden="true">
-          <div className="flex flex-col items-center gap-2 text-blue-300/60 animate-bounce">
-            <span className="text-xs font-500 tracking-widest uppercase">גלול למטה</span>
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        </motion.div>
       </div>
     </section>
   )

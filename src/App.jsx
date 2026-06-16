@@ -4,11 +4,12 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import FloatingButton from './components/FloatingButton'
 import Hero from './components/Hero'
-import Services from './components/Services'
+import ServicesGrid from './components/ServicesGrid'
 import Instagram from './components/Instagram'
 import BeforeAfter from './components/BeforeAfter'
 import Reviews from './components/Reviews'
 import Contact from './components/Contact'
+import CategoryPage from './components/CategoryPage'
 
 const WA_URL = 'https://wa.me/972587222076?text=' + encodeURIComponent('היי ינון! הגעתי דרך האתר 😊')
 
@@ -65,8 +66,8 @@ export default function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<><Hero /><Instagram /><HomeCTA /></>} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/" element={<><Hero /><ServicesGrid /><Instagram /><HomeCTA /></>} />
+        <Route path="/category/:slug" element={<CategoryPage />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/before-after" element={<BeforeAfter />} />
         <Route path="/contact" element={<Contact />} />
