@@ -126,26 +126,6 @@ export default function CategoryPage() {
           style={{ color: cat.color }}
         >{cat.tagline}</motion.p>
 
-        {/* Category quick-nav */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="flex flex-wrap justify-center gap-2 mt-8"
-        >
-          {CATEGORIES.filter(c => c.slug !== slug).map(c => (
-            <Link
-              key={c.slug}
-              to={`/category/${c.slug}`}
-              className="px-3 py-1.5 rounded-full text-xs font-600 transition-all hover:scale-105"
-              style={{
-                background: 'rgba(255,255,255,0.08)',
-                color: 'rgba(255,255,255,0.6)',
-                border: '1px solid rgba(255,255,255,0.12)',
-              }}
-            >{c.icon} {c.shortLabel}</Link>
-          ))}
-        </motion.div>
       </div>
 
       {/* Gallery */}
