@@ -25,9 +25,9 @@ function MediaCard({ item, cat, index }) {
       viewport={{ once: true }}
       transition={{ delay: index * 0.04, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       className="relative group overflow-hidden"
-      style={{ borderRadius: cat.cardRadius }}
+      style={{ borderRadius: '0.75rem', border: '1px solid rgba(255,255,255,0.15)', boxShadow: '0 4px 20px rgba(0,0,0,0.35)' }}
     >
-      <div className={`${cat.cardAspect} relative overflow-hidden bg-white/5`}>
+      <div className="aspect-square relative overflow-hidden bg-white/5">
         {item.type === 'video' ? (
           <video
             src={item.url}
@@ -169,7 +169,7 @@ export default function CategoryPage() {
             <p className="text-white/30 text-sm mt-1">לחץ על כפתור ההוספה להעלות תמונות וסרטונים</p>
           </motion.div>
         ) : (
-          <div className={`grid ${cat.gridCols} gap-3 md:gap-4`}>
+          <div className="grid grid-cols-3 gap-3 md:gap-4">
             {media.map((item, i) => (
               <MediaCard key={item.id} item={item} cat={cat} index={i} />
             ))}
