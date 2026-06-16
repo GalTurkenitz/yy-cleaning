@@ -6,7 +6,7 @@ import { CATEGORIES } from '../data/categories'
 const topLinks = [
   { label: 'הבית',        path: '/',            icon: '🏠' },
   { label: 'ביקורות',    path: '/reviews',      icon: '⭐' },
-  { label: 'לפני ואחרי', path: '/before-after', icon: '🔄' },
+  { label: 'תהליך עבודה', path: '/before-after', icon: '🎬' },
   { label: 'צור קשר',    path: '/contact',      icon: '📞' },
 ]
 

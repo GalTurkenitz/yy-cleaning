@@ -1,82 +1,83 @@
+import { useState, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
+import { supabase } from '../lib/supabase'
+import MediaUploader from './MediaUploader'
 
-const placeholders = [
-  { title: 'ניקיון דירת קבלן', before: 'לפני הניקיון', after: 'אחרי הניקיון', emoji: '🏗️' },
-  { title: 'פוליש רצפה', before: 'לפני הפוליש', after: 'אחרי הפוליש', emoji: '💎' },
-  { title: 'ניקיון חלונות', before: 'לפני הניקיון', after: 'אחרי הניקיון', emoji: '🪟' },
-]
+const SLUG = 'work-process'
 
 export default function BeforeAfter() {
+  const [videos, setVideos] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  const loadVideos = useCallback(async () => {
+    setLoading(true)
+    const { data } = await supabase
+      .from('media')
+      .select('*')
+      .eq('category', SLUG)
+      .order('created_at', { ascending: false })
+    setVideos(data || [])
+    setLoading(false)
+  }, [])
+
+  useEffect(() => { loadVideos() }, [loadVideos])
+
+  const handleDelete = async (item) => {
+    if (!confirm('למחוק את הסרטון?')) return
+    const path = new URL(item.url).pathname.split('/media/')[1]
+    await supabase.storage.from('media').remove([path])
+    await supabase.from('media').delete().eq('id', item.id)
+    loadVideos()
+  }
+
   return (
-    <section id="before-after" className="py-28 bg-[#0B2954]" aria-labelledby="ba-title">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="min-h-screen py-24 px-4"
+      style={{ background: 'linear-gradient(160deg, #050e1f 0%, #0B2954 45%, #0d3d7a 70%, #0f4fa0 100%)' }}>
+      <div className="max-w-5xl mx-auto">
 
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-16">
-          <p className="text-[#42A5F5] font-700 text-sm tracking-widest uppercase mb-3">תוצאות אמיתיות</p>
-          <h2 id="ba-title" className="text-4xl md:text-5xl font-900 text-white mb-4">לפני ואחרי</h2>
-          <p className="text-blue-300 text-lg max-w-xl mx-auto">הצוות שלנו מצלם כל עבודה — כדי שתראו את ההבדל במו עיניכם</p>
-          <div className="mt-6 mx-auto w-16 h-1 rounded-full bg-[#42A5F5]" aria-hidden="true" />
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {placeholders.map((p, i) => (
-            <motion.div key={p.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-2xl overflow-hidden border border-white/10"
-              style={{ background: 'rgba(255,255,255,0.05)' }}>
-
-              {/* Video placeholder */}
-              <div className="relative aspect-video bg-gradient-to-br from-[#1565C0]/30 to-[#0B2954]/60 flex flex-col items-center justify-center gap-3 border-b border-white/10">
-                <div className="text-5xl" aria-hidden="true">{p.emoji}</div>
-                <div className="flex items-center justify-center gap-8 text-white/50 text-xs">
-                  <div className="text-center">
-                    <div className="w-16 h-16 rounded-xl bg-white/10 mb-1 flex items-center justify-center text-2xl" aria-hidden="true">😟</div>
-                    {p.before}
-                  </div>
-                  <div className="text-2xl" aria-hidden="true">→</div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 rounded-xl bg-[#1565C0]/40 mb-1 flex items-center justify-center text-2xl" aria-hidden="true">😍</div>
-                    {p.after}
-                  </div>
+        {loading ? (
+          <div className="flex justify-center items-center py-40">
+            <svg className="w-8 h-8 animate-spin" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+              <circle cx="12" cy="12" r="10" strokeOpacity="0.3" />
+              <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round" />
+            </svg>
+          </div>
+        ) : videos.length === 0 ? (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="text-center py-40">
+            <p className="text-6xl mb-4" aria-hidden="true">🎬</p>
+            <p className="text-white/50 text-lg">עוד אין סרטונים</p>
+            <p className="text-white/30 text-sm mt-1">לחץ על כפתור ההוספה להעלות סרטונים</p>
+          </motion.div>
+        ) : (
+          <div className="grid grid-cols-3 gap-3 md:gap-4">
+            {videos.map((item, i) => (
+              <motion.div key={item.id}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04, duration: 0.4 }}
+                className="relative group overflow-hidden rounded-xl"
+                style={{ border: '1px solid rgba(255,255,255,0.15)', boxShadow: '0 4px 20px rgba(0,0,0,0.35)' }}>
+                <div className="aspect-square relative bg-white/5">
+                  <video
+                    src={item.url}
+                    autoPlay muted loop playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <button
+                    onClick={() => handleDelete(item)}
+                    className="absolute top-2 left-2 w-7 h-7 rounded-full bg-red-600/80 text-white text-xs font-700 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                    aria-label="מחק"
+                  >✕</button>
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center"
-                    aria-label={`סרטון ${p.title} — בקרוב`}>
-                    <svg className="w-6 h-6 text-white mr-[-3px]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="absolute top-3 left-3 px-2 py-1 rounded-lg bg-[#1565C0]/80 text-white text-xs font-600">
-                  בקרוב
-                </div>
-              </div>
-
-              <div className="p-5">
-                <h3 className="text-white font-700 text-base">{p.title}</h3>
-                <p className="text-blue-300/70 text-sm mt-1">סרטון לפני ואחרי יועלה בקרוב</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }} transition={{ delay: 0.5 }}
-          className="mt-12 text-center">
-          <p className="text-blue-300/60 text-sm">לצפייה בסרטונים נוספים עקבו אחרינו באינסטגרם</p>
-          <a href="https://www.instagram.com/cleanliness2344?igsh=MWl3MmI0aDh6aDNyZw=="
-            target="_blank" rel="noopener noreferrer"
-            className="inline-block mt-3 text-[#42A5F5] font-700 hover:underline"
-            aria-label="עברו לאינסטגרם שלנו לצפייה בסרטונים">
-            @cleanliness2344 ←
-          </a>
-        </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
+
+      <MediaUploader category={SLUG} onUpload={loadVideos} color="#1565C0" />
     </section>
   )
 }
