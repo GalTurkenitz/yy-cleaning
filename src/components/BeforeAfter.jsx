@@ -35,6 +35,12 @@ export default function BeforeAfter() {
       style={{ background: 'linear-gradient(160deg, #050e1f 0%, #0B2954 45%, #0d3d7a 70%, #0f4fa0 100%)' }}>
       <div className="max-w-5xl mx-auto">
 
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }} className="text-center mb-12">
+          <p className="text-[#42A5F5] font-700 text-sm tracking-widest uppercase mb-3">י.י נקיון ואחזקת מבנים</p>
+          <h1 className="text-4xl md:text-6xl font-900 text-white leading-tight">תהליך עבודה</h1>
+        </motion.div>
+
         {loading ? (
           <div className="flex justify-center items-center py-40">
             <svg className="w-8 h-8 animate-spin" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
