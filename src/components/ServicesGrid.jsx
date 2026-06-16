@@ -9,7 +9,7 @@ export default function ServicesGrid() {
     <section className="pt-14 pb-12 px-6">
       <div className="max-w-5xl mx-auto">
 
-        <div className="grid grid-cols-3 gap-3 md:gap-4">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
           {CATEGORIES.map((cat, i) => (
             <motion.button
               key={cat.slug}
@@ -20,8 +20,7 @@ export default function ServicesGrid() {
               transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ scale: 1.06, y: -3 }}
               whileTap={{ scale: 0.96 }}
-              className="rounded-xl overflow-hidden text-right cursor-pointer focus:outline-none group"
-              style={{ border: '1px solid rgba(255,255,255,0.15)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
+              className="rounded-xl overflow-hidden text-right cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/40 group"
               aria-label={`עבור לדף ${cat.label}`}
             >
               {/* Image area */}
