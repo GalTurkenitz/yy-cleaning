@@ -6,19 +6,8 @@ export default function ServicesGrid() {
   const navigate = useNavigate()
 
   return (
-    <section className="pt-12 pb-16 px-6" style={{ background: 'linear-gradient(160deg, #050e1f 0%, #0B2954 45%, #0d3d7a 70%, #0f4fa0 100%)' }}>
+    <section className="pt-6 pb-12 px-6" style={{ background: 'linear-gradient(160deg, #050e1f 0%, #0B2954 45%, #0d3d7a 70%, #0f4fa0 100%)' }}>
       <div className="max-w-5xl mx-auto">
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-8"
-        >
-          <p className="text-[#42A5F5] font-700 text-sm tracking-widest uppercase mb-3">השירותים שלנו</p>
-          <h2 className="text-3xl md:text-5xl font-900 text-white leading-tight">במה נוכל לעזור?</h2>
-        </motion.div>
 
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
           {CATEGORIES.map((cat, i) => (
