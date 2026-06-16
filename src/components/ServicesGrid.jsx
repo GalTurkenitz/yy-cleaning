@@ -6,7 +6,7 @@ export default function ServicesGrid() {
   const navigate = useNavigate()
 
   return (
-    <section className="pt-12 pb-16 px-6" style={{ background: 'linear-gradient(180deg, #050e1f 0%, #071428 100%)' }}>
+    <section className="pt-12 pb-16 px-6" style={{ background: 'linear-gradient(160deg, #050e1f 0%, #0B2954 45%, #0d3d7a 70%, #0f4fa0 100%)' }}>
       <div className="max-w-5xl mx-auto">
 
         <motion.div
