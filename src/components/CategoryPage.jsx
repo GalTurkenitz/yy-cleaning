@@ -146,7 +146,7 @@ export default function CategoryPage() {
           >
             <p className="text-6xl mb-4" aria-hidden="true">📷</p>
             <p className="text-white/50 text-lg">עוד אין תמונות כאן</p>
-            <p className="text-white/30 text-sm mt-1">לחץ על כפתור ההוספה להעלות תמונות וסרטונים</p>
+            <p className="text-white/30 text-sm mt-1">לחץ על כפתור ההוספה — או פשוט הדבק תמונה עם Ctrl+V</p>
           </motion.div>
         ) : (
           <div className="grid grid-cols-3 gap-3 md:gap-4">
