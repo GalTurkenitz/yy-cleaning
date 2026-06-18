@@ -84,47 +84,58 @@ export default function CategoryPage() {
     <section style={{ background: cat.heroGradient, minHeight: '100vh' }}>
 
       {/* Hero */}
-      <div className="relative overflow-hidden pt-20 pb-14 px-6 text-center">
+      <div className="relative overflow-hidden pt-20 pb-16 px-6 text-center">
+        {/* Hero background image */}
+        {cat.image && (
+          <div className="absolute inset-0 pointer-events-none">
+            <img src={cat.image} alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0"
+              style={{ background: 'linear-gradient(180deg, rgba(5,14,31,0.55) 0%, rgba(5,14,31,0.45) 45%, rgba(5,14,31,0.96) 100%)' }} />
+          </div>
+        )}
+
         {/* Background glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-1/2 translate-x-1/2 w-80 h-80 rounded-full opacity-15 blur-3xl"
             style={{ background: cat.color }} />
         </div>
 
-        {/* Breadcrumb */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4 }}
-          className="flex items-center justify-center gap-2 text-white/40 text-sm mb-8"
-        >
-          <Link to="/" className="hover:text-white transition-colors">הבית</Link>
-          <span>/</span>
-          <span className="text-white/70">{cat.label}</span>
-        </motion.div>
+        <div className="relative z-10">
+          {/* Breadcrumb */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            className="flex items-center justify-center gap-2 text-white/50 text-sm mb-8"
+          >
+            <Link to="/" className="hover:text-white transition-colors">הבית</Link>
+            <span>/</span>
+            <span className="text-white/80">{cat.label}</span>
+          </motion.div>
 
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-          className="text-6xl mb-5"
-          aria-hidden="true"
-        >{cat.icon}</motion.div>
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+            className="text-6xl mb-5 drop-shadow-lg"
+            aria-hidden="true"
+          >{cat.icon}</motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-6xl font-900 text-white mb-3 leading-tight"
-        >{cat.label}</motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="text-4xl md:text-6xl font-900 text-white mb-3 leading-tight drop-shadow-xl"
+          >{cat.label}</motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.5 }}
-          className="text-lg font-500"
-          style={{ color: cat.color }}
-        >{cat.tagline}</motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.5 }}
+            className="text-lg font-500 drop-shadow-md"
+            style={{ color: cat.color }}
+          >{cat.tagline}</motion.p>
+        </div>
 
       </div>
 

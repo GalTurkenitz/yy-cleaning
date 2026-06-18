@@ -28,10 +28,21 @@ export default function ServicesGrid() {
                 className="aspect-square relative flex items-center justify-center overflow-hidden"
                 style={{ background: cat.heroGradient }}
               >
-                <div className="absolute w-16 h-16 rounded-full opacity-30 blur-xl"
-                  style={{ background: cat.color }} />
-                <span className="relative text-3xl z-10 drop-shadow-lg"
-                  aria-hidden="true">{cat.icon}</span>
+                {cat.image ? (
+                  <img
+                    src={cat.image}
+                    alt=""
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                ) : (
+                  <>
+                    <div className="absolute w-16 h-16 rounded-full opacity-30 blur-xl"
+                      style={{ background: cat.color }} />
+                    <span className="relative text-3xl z-10 drop-shadow-lg"
+                      aria-hidden="true">{cat.icon}</span>
+                  </>
+                )}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
               </div>
 
