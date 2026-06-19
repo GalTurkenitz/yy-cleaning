@@ -172,7 +172,7 @@ export default function Navbar() {
                 className="w-full py-3.5 rounded-xl text-white font-700 text-sm shadow-lg"
                 style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
               >
-                הצעת מחיר חינם
+                הצעת מחיר
               </motion.button>
               <p className="text-white/30 text-xs text-center mt-3">058-7222076</p>
             </div>

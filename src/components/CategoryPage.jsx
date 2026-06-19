@@ -56,7 +56,7 @@ function MediaCard({ item, cat, index, onOpen }) {
         {/* Delete button — appears on hover */}
         <button
           onClick={handleDelete}
-          className="absolute top-2 left-2 w-7 h-7 rounded-full bg-red-600/80 text-white text-xs font-700 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
+          className="absolute top-2 left-2 w-8 h-8 rounded-full bg-red-600/90 text-white text-sm font-700 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
           aria-label="מחק"
           title="מחק"
         >✕</button>

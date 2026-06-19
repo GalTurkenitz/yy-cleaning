@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const reviews = [
-  { img: '/reviews/review1.jpg', alt: 'ביקורת לקוח - danielbaruch2' },
   { img: '/reviews/review2.jpg', alt: 'ביקורת לקוח - ניקוי דירות קבלן' },
+  { img: '/reviews/review1.jpg', alt: 'ביקורת לקוח - danielbaruch2' },
   { img: '/reviews/review3.jpg', alt: 'ביקורת לקוח - yuvalsassons אינסטגרם' },
   { img: '/reviews/review4.jpg', alt: 'ביקורת לקוח - לקוחות מרוצים' },
   { img: '/reviews/review5.jpg', alt: 'ביקורת לקוח - היה מצוין, ממליץ בחום' },

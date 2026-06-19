@@ -15,6 +15,7 @@ export default function BeforeAfter() {
       .from('media')
       .select('*')
       .eq('category', SLUG)
+      .order('sort_order', { ascending: true })
       .order('created_at', { ascending: false })
     setVideos(data || [])
     setLoading(false)
@@ -73,7 +74,7 @@ export default function BeforeAfter() {
                   />
                   <button
                     onClick={() => handleDelete(item)}
-                    className="absolute top-2 left-2 w-7 h-7 rounded-full bg-red-600/80 text-white text-xs font-700 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                    className="absolute top-2 left-2 w-8 h-8 rounded-full bg-red-600/90 text-white text-sm font-700 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
                     aria-label="מחק"
                   >✕</button>
                 </div>
