@@ -6,8 +6,8 @@ import { CATEGORIES } from '../data/categories'
 const homeLink = { label: 'הבית', path: '/', icon: '🏠' }
 const bottomLinks = [
   { label: 'תהליך עבודה', path: '/before-after', icon: '🎬' },
-  { label: 'ביקורות',    path: '/reviews',      icon: '⭐' },
-  { label: 'צור קשר',    path: '/contact',      icon: '📞' },
+  { label: 'המלצות',    path: '/reviews',      icon: '⭐' },
+  { label: 'צרו קשר',    path: '/contact',      icon: '📞' },
 ]
 
 export default function Navbar() {
@@ -115,7 +115,7 @@ export default function Navbar() {
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-base" aria-hidden="true">✨</span>
-                    שירותים
+                    השירותים שלנו
                   </div>
                   <motion.span
                     animate={{ rotate: servicesOpen ? 180 : 0 }}
