@@ -67,7 +67,7 @@ export default function Contact() {
           <motion.a href="tel:0587222076"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.6 }}
-            className="btn-shine flex items-center gap-4 px-7 py-5 rounded-2xl bg-white text-[#0B2954] font-800 text-xl shadow-2xl hover:bg-blue-50 transition-all hover:scale-105"
+            className="btn-shine flex items-center justify-center gap-4 px-7 py-5 rounded-2xl bg-white text-[#0B2954] font-800 text-xl shadow-2xl hover:bg-blue-50 transition-all hover:scale-105"
             aria-label="חייגו לינון 058-7222076">
             <motion.span animate={{ rotate: [0, -15, 15, -10, 10, 0] }}
               transition={{ repeat: Infinity, repeatDelay: 3, duration: 0.6 }}
@@ -80,7 +80,7 @@ export default function Contact() {
             target="_blank" rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.6 }}
-            className="btn-shine flex items-center gap-3 px-7 py-5 rounded-2xl font-800 text-lg shadow-2xl transition-all hover:scale-105"
+            className="btn-shine flex items-center justify-center gap-3 px-7 py-5 rounded-2xl font-800 text-lg shadow-2xl transition-all hover:scale-105"
             style={{ background: '#25D366', color: '#fff' }}
             aria-label="שלחו הודעה ישירה בוואטסאפ">
             {WA_ICON}
