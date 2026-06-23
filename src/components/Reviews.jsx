@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const reviews = [
+  { img: '/reviews/review3.jpg', alt: 'ביקורת לקוח - yuvalsassons אינסטגרם' },
   { img: '/reviews/review2.jpg', alt: 'ביקורת לקוח - ניקוי דירות קבלן' },
   { img: '/reviews/review1.jpg', alt: 'ביקורת לקוח - danielbaruch2' },
-  { img: '/reviews/review3.jpg', alt: 'ביקורת לקוח - yuvalsassons אינסטגרם' },
   { img: '/reviews/review4.jpg', alt: 'ביקורת לקוח - לקוחות מרוצים' },
   { img: '/reviews/review5.jpg', alt: 'ביקורת לקוח - היה מצוין, ממליץ בחום' },
   { img: '/reviews/review6.jpg', alt: 'ביקורת לקוח - מיכאל רז, נתניה' },
@@ -40,8 +40,8 @@ export default function Reviews() {
           viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16">
           <p className="text-[#1565C0] font-700 text-sm tracking-widest uppercase mb-3">לקוחות מרוצים</p>
-          <h2 id="reviews-title" className="text-4xl md:text-5xl font-900 text-[#0B2954] mb-4">
-            על איכות ושירות<br />לא מתפשרים!!
+          <h2 id="reviews-title" className="text-3xl md:text-5xl font-900 text-[#0B2954] mb-4 leading-tight">
+            אצלנו כל לקוח מקבל<br />יחס אישי, שירות מקצועי,<br />נקיון ברמה גבוהה
           </h2>
           <p className="text-slate-500 text-lg">מה הלקוחות שלנו אומרים עלינו</p>
           <div className="mt-6 mx-auto w-16 h-1 rounded-full bg-[#1565C0]" aria-hidden="true" />

@@ -1,13 +1,15 @@
 import { useState, useEffect, useCallback } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { supabase } from '../lib/supabase'
 import MediaUploader from './MediaUploader'
+import Lightbox from './Lightbox'
 
 const SLUG = 'work-process'
 
 export default function BeforeAfter() {
   const [videos, setVideos] = useState([])
   const [loading, setLoading] = useState(true)
+  const [lightboxIndex, setLightboxIndex] = useState(null)
 
   const loadVideos = useCallback(async () => {
     setLoading(true)
@@ -57,14 +59,18 @@ export default function BeforeAfter() {
             <p className="text-white/30 text-sm mt-1">לחץ על כפתור ההוספה להעלות סרטונים</p>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-3 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 gap-3 md:gap-5">
             {videos.map((item, i) => (
               <motion.div key={item.id}
                 initial={{ opacity: 0, scale: 0.92 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.04, duration: 0.4 }}
-                className="relative group overflow-hidden rounded-xl"
+                transition={{ delay: i * 0.04, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                onClick={() => setLightboxIndex(i)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setLightboxIndex(i) } }}
+                className="relative group overflow-hidden rounded-xl cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-white/60"
                 style={{ border: '1px solid rgba(255,255,255,0.15)', boxShadow: '0 4px 20px rgba(0,0,0,0.35)' }}>
                 <div className="aspect-square relative bg-white/5">
                   <video
@@ -72,8 +78,15 @@ export default function BeforeAfter() {
                     autoPlay muted loop playsInline
                     className="absolute inset-0 w-full h-full object-cover"
                   />
+                  {/* Play / zoom hint on hover */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                    <svg className="w-12 h-12 text-white opacity-0 group-hover:opacity-90 transition-opacity drop-shadow-lg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.35)" />
+                      <path d="M9.5 7.5v9l7-4.5z" />
+                    </svg>
+                  </div>
                   <button
-                    onClick={() => handleDelete(item)}
+                    onClick={e => { e.stopPropagation(); handleDelete(item) }}
                     className="absolute top-2 left-2 w-8 h-8 rounded-full bg-red-600/90 text-white text-sm font-700 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
                     aria-label="מחק"
                   >✕</button>
@@ -85,6 +98,18 @@ export default function BeforeAfter() {
       </div>
 
       <MediaUploader category={SLUG} onUpload={loadVideos} color="#1565C0" />
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIndex !== null && videos[lightboxIndex] && (
+          <Lightbox
+            items={videos}
+            index={lightboxIndex}
+            onIndex={setLightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   )
 }

@@ -3,10 +3,10 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CATEGORIES } from '../data/categories'
 
-const topLinks = [
-  { label: 'הבית',        path: '/',            icon: '🏠' },
-  { label: 'ביקורות',    path: '/reviews',      icon: '⭐' },
+const homeLink = { label: 'הבית', path: '/', icon: '🏠' }
+const bottomLinks = [
   { label: 'תהליך עבודה', path: '/before-after', icon: '🎬' },
+  { label: 'ביקורות',    path: '/reviews',      icon: '⭐' },
   { label: 'צור קשר',    path: '/contact',      icon: '📞' },
 ]
 
@@ -84,23 +84,23 @@ export default function Navbar() {
 
             {/* Nav links */}
             <nav className="flex flex-col gap-1 px-3 py-4 flex-1">
-              {topLinks.map((l, i) => {
-                const active = location.pathname === l.path
+              {/* Home */}
+              {(() => {
+                const active = location.pathname === homeLink.path
                 return (
                   <motion.button
-                    key={l.path}
-                    onClick={() => go(l.path)}
+                    onClick={() => go(homeLink.path)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    transition={{ delay: 0 }}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-600 transition-all duration-200 text-left
                       ${active ? 'bg-white text-[#0B2954] shadow-lg' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}
                   >
-                    <span className="text-base" aria-hidden="true">{l.icon}</span>
-                    {l.label}
+                    <span className="text-base" aria-hidden="true">{homeLink.icon}</span>
+                    {homeLink.label}
                   </motion.button>
                 )
-              })}
+              })()}
 
               {/* Services collapsible */}
               <div className="mt-1">
@@ -158,6 +158,25 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
               </div>
+
+              {/* Work process, reviews, contact */}
+              {bottomLinks.map((l, i) => {
+                const active = location.pathname === l.path
+                return (
+                  <motion.button
+                    key={l.path}
+                    onClick={() => go(l.path)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.25 + i * 0.05 }}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-600 transition-all duration-200 text-left
+                      ${active ? 'bg-white text-[#0B2954] shadow-lg' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}
+                  >
+                    <span className="text-base" aria-hidden="true">{l.icon}</span>
+                    {l.label}
+                  </motion.button>
+                )
+              })}
             </nav>
 
             {/* CTA */}
@@ -172,7 +191,7 @@ export default function Navbar() {
                 className="w-full py-3.5 rounded-xl text-white font-700 text-sm shadow-lg"
                 style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
               >
-                הצעת מחיר
+                להצעת מחיר
               </motion.button>
               <p className="text-white/30 text-xs text-center mt-3">058-7222076</p>
             </div>
