@@ -74,8 +74,8 @@ function HomeWrapper() {
       <div className="relative" style={{ zIndex: 1 }}>
         <Hero />
         <ServicesGrid />
-        <Instagram />
         <HomeCTA />
+        <Instagram />
       </div>
     </div>
   )
