@@ -1,25 +1,11 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { supabase } from '../lib/supabase'
-import { getCategoryBySlug, CATEGORIES } from '../data/categories'
-import MediaUploader from './MediaUploader'
+import { getCategoryBySlug } from '../data/categories'
+import { getGallery } from '../data/gallery'
 import Lightbox from './Lightbox'
 
 function MediaCard({ item, cat, index, onOpen }) {
-  const [deleted, setDeleted] = useState(false)
-
-  const handleDelete = async e => {
-    e.stopPropagation()
-    if (!confirm('למחוק את הקובץ?')) return
-    const path = new URL(item.url).pathname.split('/media/')[1]
-    await supabase.storage.from('media').remove([path])
-    await supabase.from('media').delete().eq('id', item.id)
-    setDeleted(true)
-  }
-
-  if (deleted) return null
-
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.92 }}
@@ -54,13 +40,6 @@ function MediaCard({ item, cat, index, onOpen }) {
             <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
           </svg>
         </div>
-        {/* Delete button — appears on hover */}
-        <button
-          onClick={handleDelete}
-          className="absolute top-2 left-2 w-8 h-8 rounded-full bg-red-600/90 text-white text-sm font-700 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
-          aria-label="מחק"
-          title="מחק"
-        >✕</button>
       </div>
     </motion.div>
   )
@@ -70,26 +49,12 @@ export default function CategoryPage() {
   const { slug } = useParams()
   const navigate = useNavigate()
   const cat = getCategoryBySlug(slug)
-  const [media, setMedia] = useState([])
-  const [loading, setLoading] = useState(true)
+  const media = getGallery(slug)
   const [lightboxIndex, setLightboxIndex] = useState(null)
 
-  const loadMedia = useCallback(async () => {
-    setLoading(true)
-    const { data } = await supabase
-      .from('media')
-      .select('*')
-      .eq('category', slug)
-      .order('sort_order', { ascending: true })
-      .order('created_at', { ascending: false })
-    setMedia(data || [])
-    setLoading(false)
-  }, [slug])
-
   useEffect(() => {
-    if (!cat) { navigate('/'); return }
-    loadMedia()
-  }, [slug, cat, navigate, loadMedia])
+    if (!cat) navigate('/')
+  }, [cat, navigate])
 
   if (!cat) return null
 
@@ -155,14 +120,7 @@ export default function CategoryPage() {
       {/* Gallery */}
       <div className="max-w-6xl mx-auto px-4 pb-32">
 
-        {loading ? (
-          <div className="flex justify-center items-center py-24">
-            <svg className="w-8 h-8 animate-spin" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" strokeOpacity="0.3" />
-              <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round" />
-            </svg>
-          </div>
-        ) : media.length === 0 ? (
+        {media.length === 0 ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -170,19 +128,15 @@ export default function CategoryPage() {
           >
             <p className="text-6xl mb-4" aria-hidden="true">📷</p>
             <p className="text-white/50 text-lg">עוד אין תמונות כאן</p>
-            <p className="text-white/30 text-sm mt-1">לחץ על כפתור ההוספה — או פשוט הדבק תמונה עם Ctrl+V</p>
           </motion.div>
         ) : (
           <div className="grid grid-cols-2 gap-3 md:gap-5">
             {media.map((item, i) => (
-              <MediaCard key={item.id} item={item} cat={cat} index={i} onOpen={() => setLightboxIndex(i)} />
+              <MediaCard key={item.url} item={item} cat={cat} index={i} onOpen={() => setLightboxIndex(i)} />
             ))}
           </div>
         )}
       </div>
-
-      {/* Upload button */}
-      <MediaUploader category={slug} onUpload={loadMedia} color={cat.color} />
 
       {/* Lightbox */}
       <AnimatePresence>

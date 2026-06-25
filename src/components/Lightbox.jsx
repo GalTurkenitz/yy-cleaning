@@ -58,7 +58,7 @@ export default function Lightbox({ items, index, onClose, onIndex }) {
 
       {/* Media */}
       <motion.div
-        key={item.id}
+        key={index}
         initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.25 }}
         onClick={e => e.stopPropagation()}
