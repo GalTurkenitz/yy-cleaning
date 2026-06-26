@@ -10,6 +10,7 @@ import BeforeAfter from './components/BeforeAfter'
 import Reviews from './components/Reviews'
 import Contact from './components/Contact'
 import CategoryPage from './components/CategoryPage'
+import AccessibilityWidget from './components/AccessibilityWidget'
 
 const WA_URL = 'https://wa.me/972587222076?text=' + encodeURIComponent('היי ינון! הגעתי דרך האתר 😊')
 
@@ -92,6 +93,11 @@ function Layout({ children }) {
         <Footer />
       </div>
       <FloatingButton />
+      <AccessibilityWidget
+        businessName="י.י ניקיון ואחזקת מבנים"
+        phone="058-7222076"
+        email="webforyoutwo@gmail.com"
+      />
     </div>
   )
 }
