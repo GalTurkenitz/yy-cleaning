@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yy-cleaning.netlify.app/sitemap.xml
+Sitemap: https://yy-cleaning.com/sitemap.xml
