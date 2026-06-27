@@ -31,7 +31,7 @@ export default function ServicesGrid() {
                 {cat.image ? (
                   <img
                     src={cat.image}
-                    alt=""
+                    alt={`${cat.label} — י.י נקיון מקצועי בנתניה והשרון`}
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />

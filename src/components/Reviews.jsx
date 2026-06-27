@@ -68,7 +68,7 @@ export default function Reviews() {
               <motion.div key={current} custom={direction} variants={variants}
                 initial="enter" animate="center" exit="exit"
                 className="absolute inset-0">
-                <img src={reviews[current].img} alt={reviews[current].alt}
+                <img src={reviews[current].img} alt={reviews[current].alt} loading="lazy"
                   className="w-full h-full object-contain bg-gray-50" />
               </motion.div>
             </AnimatePresence>

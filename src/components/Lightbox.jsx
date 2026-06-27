@@ -67,7 +67,7 @@ export default function Lightbox({ items, index, onClose, onIndex }) {
         {item.type === 'video' ? (
           <video src={item.url} controls autoPlay playsInline className="max-w-full max-h-[86vh] rounded-lg" />
         ) : (
-          <img src={item.url} alt="" className="max-w-full max-h-[86vh] rounded-lg object-contain" />
+          <img src={item.url} alt={item.alt || 'תמונת עבודת נקיון של י.י נקיון ואחזקת מבנים'} className="max-w-full max-h-[86vh] rounded-lg object-contain" />
         )}
       </motion.div>
     </motion.div>

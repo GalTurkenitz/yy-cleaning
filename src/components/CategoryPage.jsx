@@ -66,7 +66,7 @@ export default function CategoryPage() {
         {/* Hero background image */}
         {cat.image && (
           <div className="absolute inset-0 pointer-events-none">
-            <img src={cat.image} alt="" className="w-full h-full object-cover" />
+            <img src={cat.image} alt={`${cat.label} — נקיון מקצועי בנתניה והשרון`} className="w-full h-full object-cover" />
             <div className="absolute inset-0"
               style={{ background: 'linear-gradient(180deg, rgba(5,14,31,0.55) 0%, rgba(5,14,31,0.45) 45%, rgba(5,14,31,0.96) 100%)' }} />
           </div>

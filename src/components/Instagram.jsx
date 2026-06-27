@@ -75,6 +75,7 @@ export default function Instagram() {
                   <img
                     src="/instagram-profile.jpg"
                     alt="דף האינסטגרם של cleanliness2344 — י.י נקיון ואחזקת מבנים"
+                    loading="lazy"
                     className="w-full object-cover object-top"
                     style={{ maxHeight: 380 }}
                   />
@@ -103,6 +104,7 @@ export default function Instagram() {
                   <img
                     src="/tiktok-profile.jpg"
                     alt="דף הטיקטוק של cleanliness2344 — י.י נקיון ואחזקת מבנים"
+                    loading="lazy"
                     className="w-full object-cover object-top"
                     style={{ maxHeight: 380 }}
                   />
