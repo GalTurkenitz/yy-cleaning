@@ -49,7 +49,7 @@ export default function Hero() {
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="text-5xl md:text-7xl font-900 text-white mb-4 leading-tight">
-          נקיון מקצועי בנתניה והשרון
+          נקיון ברמה גבוהה
         </motion.h1>
 
         {/* Paragraphs */}
